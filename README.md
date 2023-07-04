@@ -1,18 +1,36 @@
-# Salesforce DX Project: Next Steps
+# Technical Design Document 
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+# Introduction:
+This technical document provides step-by-step instructions on creating a Lightning web component that utilizes the @wire decorator to retrieve contact records from an Apex controller. The retrieved contact records are then displayed in a lightning-datatable component. Additionally, we will add the component to a new App page.
 
-## How Do You Plan to Deploy Your Changes?
+# Lightning App
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+ - Lightning App : Contacts_App created.
+ - Lightning App Page : Contacts created.
+    - Users with System Admin Profile will have access to this App & page. 
 
-## Configure Your Salesforce DX Project
+# Apex Component
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+- ContactController - This class is  the controller class for the LWC components. 
+    - We have implemented the best practices like try, catch block 
+    - thrown AuraHandledException , which is elegantly handled by the LWC component. 
+    - In terms of security the class runs in with sharing mode preserving the users persmissions to sharing. 
+    - Field-level security (FLS) and object permissions of the running user are respected in user mode, hence the query is run with respect to USER_MODE, agains the standard way of system mode.
 
-## Read All About It
+- ContactControllerTest class is implememted to unit-test.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+# Lightning Web Component 
+
+- ContactList 
+    - We have implemented getContacts()  wire method to get the contacts and displayed in the UI with the help of Lightning-datatable. 
+    - Incase of any error/expections are handled on client level too in the js. 
+
+- error-panel 
+    - error panel componet handles the errors one might encounter.
+
+# Testing  
+
+Setup --> Navigate to Contact_ App --> Contacts Page --> All the conatcts will be shown. 
+
+# Output 
+

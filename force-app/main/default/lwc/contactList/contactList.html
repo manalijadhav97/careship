@@ -1,0 +1,11 @@
+<template>
+  <lightning-card title="Contact Information">
+    <template lwc:if={contactInfo}>
+      <lightning-datatable key-field="id" data={contactInfo} columns={columns} hide-checkbox-column>
+      </lightning-datatable>
+    </template>
+    <template lwc:elseif={error}>
+      <c-error-panel errors={error}></c-error-panel>
+    </template>
+  </lightning-card>
+</template>

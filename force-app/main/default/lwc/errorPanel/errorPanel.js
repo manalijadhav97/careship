@@ -1,5 +1,4 @@
 import { LightningElement, api } from 'lwc';
-import { reduceErrors } from 'c/ldsUtils';
 import noDataIllustration from './templates/noDataIllustration.html';
 import inlineMessage from './templates/inlineMessage.html';
 
@@ -14,7 +13,7 @@ export default class ErrorPanel extends LightningElement {
     viewDetails = false;
 
     get errorMessages() {
-        return reduceErrors(this.errors);
+        return [].push(this.errors);
     }
 
     handleShowDetailsClick() {

@@ -1,5 +1,16 @@
 # Technical Design Document 
 
+# Deployment Instructions
+
+### Option 1:
+1. Authroize a dev hub.
+2. Create a scratch org.
+3. Deploy the source (force-app) folder.
+ 
+### Option 2:
+1. Authroize an org.
+2. Deploy the source (force-app) folder.
+
 # Introduction:
 This technical document provides step-by-step instructions on creating a Lightning web component that utilizes the @wire decorator to retrieve contact records from an Apex controller. The retrieved contact records are then displayed in a lightning-datatable component. Additionally, we will add the component to a new App page.
 
